@@ -1,7 +1,7 @@
 #!/bin/bash
 #|./ingredients/core/aur.sh #Mandatory AUR helper
 
-sudo pacman -Syu --noconfirm --needed reflector rust
+sudo pacman -Syu --noconfirm --needed rust
 
 CWD=$(pwd)
 
