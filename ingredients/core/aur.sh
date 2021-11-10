@@ -5,9 +5,10 @@ sudo pacman -S --noconfirm --needed rust
 
 CWD=$(pwd)
 
-git clone https://aur.archlinux.org/paru.git /tmp/paru
-cd /tmp/paru
+mkdir -p ~/.paru-makepkg
+git clone https://aur.archlinux.org/paru.git ~/.paru-makepkg/paru
+cd ~/.paru-makepkg/paru
 makepkg -si --noconfirm --needed
 
 cd ${CWD}
-rm -rf /tmp/paru
+rm -rf ~/.paru-makepkg
