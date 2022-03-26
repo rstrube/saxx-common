@@ -1,5 +1,5 @@
 #!/bin/bash
-#|./ingredients/core/aur.sh #Mandatory AUR helper
+#|./ingredients/core/aur.sh #Paru AUR helper
 
 sudo pacman -S --noconfirm --needed rust
 
