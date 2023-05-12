@@ -5,10 +5,9 @@ function install_fonts {
     # Install the following fonts:
     # Roboto: default font for Google's Android OS
     # Jetbrains Mono: a fantastic monospace font
-    # Droid: another common font that came with Google's Android OS
     # Liberation: font family which aims at metric compatibility with Arial, Times New Roman, and Courier New
     # Nerd Fonts: Provides a plethora of font icons
-    paru -S --noconfirm --needed ttf-roboto ttf-jetbrains-mono ttf-droid ttf-liberation ttf-nerd-fonts-symbols-1000-em
+    paru -S --noconfirm --needed ttf-roboto ttf-jetbrains-mono ttf-liberation ttf-nerd-fonts-symbols
 
     # Create a symlink for the nerd fonts config
     sudo ln -s /usr/share/fontconfig/conf.avail/10-nerd-font-symbols.conf /etc/fonts/conf.d/10-nerd-font-symbols.conf
@@ -22,12 +21,13 @@ function install_fonts {
 <?xml version="1.0"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
-    <!-- register JetBrains Mono as a monospace font -->
+    <!-- set JetBrains Mono as the preferred monospace font (fallback to Nerd Font for missing glyphs) -->
     <alias>
-        <family>JetBrains Mono</family>
-        <default>
-            <family>monospace</family>
-        </default>
+        <family>monospace</family>
+        <prefer>
+            <family>JetBrains Mono</family>
+            <family>Symbols Nerd Font</family>
+        </prefer>
     </alias>
     <dir>~/.fonts</dir>
 </fontconfig>
@@ -38,6 +38,9 @@ EOT
     # This rebuilds the font-cache, taking into account any changes
     sudo fc-cache -r -v
     fc-cache -r -v
+
+    # Confirm that Jetbrains Mono is the default font used for monospace
+    fc-match --verbose monospace
 }
 
 function test_coverage {
