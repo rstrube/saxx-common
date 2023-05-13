@@ -3,11 +3,10 @@
 
 function install_fonts {
     # Install the following fonts:
-    # Roboto: default font for Google's Android OS
     # Jetbrains Mono: a fantastic monospace font
     # Liberation: font family which aims at metric compatibility with Arial, Times New Roman, and Courier New
     # Nerd Fonts: Provides a plethora of font icons
-    paru -S --noconfirm --needed ttf-roboto ttf-jetbrains-mono ttf-liberation ttf-nerd-fonts-symbols
+    paru -S --noconfirm --needed ttf-jetbrains-mono ttf-liberation ttf-nerd-fonts-symbols
 
     # Create a symlink for the nerd fonts config
     sudo ln -s /usr/share/fontconfig/conf.avail/10-nerd-font-symbols.conf /etc/fonts/conf.d/10-nerd-font-symbols.conf
