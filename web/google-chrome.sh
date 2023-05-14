@@ -10,7 +10,7 @@ if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         mkdir -p ~/.config
     fi
 
-cat <<EOT > "chrome-flags.conf"	
+    cat <<EOT > "chrome-flags.conf"
 --enable-webrtc-pipewire-capturer
 --ozone-platform-hint=auto
 EOT
