@@ -3,18 +3,21 @@
 
 paru -S --noconfirm --needed google-chrome
 
+CONFIG_DIR=~/.config
+CHROME_FLAGS=chrome-flags.conf
+
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-    echo "Wayland detected, creating ~/.config/chrome-flags.conf"
+    echo "Wayland detected, creating ${CONFIG_DIR}/${CHROME_FLAGS}"
     
-    if [[ ! -d "~./config" ]]; then
-        mkdir -p ~/.config
+    if [[ ! -d "$CONFIG_DIR" ]]; then
+        mkdir -p $CONFIG_DIR
     fi
 
-    cat <<EOT > "chrome-flags.conf"
+    cat <<EOT > ${CHROME_FLAGS}
 --enable-webrtc-pipewire-capturer
 --ozone-platform-hint=auto
 EOT
 
-    cp chrome-flags.conf ~/.config/
-    rm chrome-flags.conf
+    cp $CHROME_FLAGS $CONFIG_DIR
+    rm $CHROME_FLAGS
 fi

@@ -1,17 +1,21 @@
 #!/bin/bash
 
-KITTY_CONF_DIR=~/.config/kitty
+KITTY_CONFIG_DIR=~/.config/kitty
+KITTY_CONFIG_FILE=kitty.conf
+KITTY_CONFIG_FILE_FULL_PATH=${KITTY_CONFIG_DIR}/${KITTY_CONFIG_FILE}
+
+DRACULA_COLORS_CONFIG_FILE=dracula-colors.conf
 
 function init_dracula_kitty() {
 
-    if [[ ! -d "$KITTY_CONF_DIR" ]]; then
-        mkdir -p $KITTY_CONF_DIR
+    if [[ ! -d "$KITTY_CONFIG_DIR" ]]; then
+        mkdir -p $KITTY_CONFIG_DIR
     fi
 }
 
 function configure_dracula_kitty {
 
-    cat <<EOT > "dracula-colors.conf"
+    cat <<EOT > ${DRACULA_COLORS_CONFIG_FILE}
 # vim:ft=kitty
 ## name: Dracula
 ## author: Keegan Carruthers-Smith
@@ -49,11 +53,11 @@ mark1_foreground #282a36
 mark1_background #ff5555
 EOT
 
-    cp dracula-colors.conf ${KITTY_CONF_DIR}/.
-    rm dracula-colors.conf
+    cp $DRACULA_COLORS_CONFIG_FILE ${KITTY_CONFIG_DIR}/.
+    rm $DRACULA_COLORS_CONFIG_FILE
 
-    echo "# BEGIN_KITTY_THEME" >> ~/.config/kitty/kitty.conf
-    echo "# Dracula Theme" >> ~/.config/kitty/kitty.conf
-    echo "include dracula-colors.conf" >> ~/.config/kitty/kitty.conf
-    echo "# END_KITTY_THEME" >> ~/.config/kitty/kitty.conf
+    echo "# BEGIN_KITTY_THEME" >> ${KITTY_CONFIG_FILE_FULL_PATH}
+    echo "# Dracula Theme" >> ${KITTY_CONFIG_FILE_FULL_PATH}
+    echo "include dracula-colors.conf" >> ${KITTY_CONFIG_FILE_FULL_PATH}
+    echo "# END_KITTY_THEME" >> ${KITTY_CONFIG_FILE_FULL_PATH}
 }

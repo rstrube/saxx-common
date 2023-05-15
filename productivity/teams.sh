@@ -3,14 +3,18 @@
 
 paru -S --noconfirm --needed teams-for-linux
 
+LOCAL_APPLICATIONS_DIR=~/.local/share/applications
+USR_APPLICATIONS_DIR=/usr/share/applications
+TEAMS_DESKTOP_FILE=teams-for-linux.desktop
+
 if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
-    echo "Wayland detected, creating ~/.local/share/applications/teams-for-linux.desktop"
+    echo "Wayland detected, creating ${LOCAL_APPLICATIONS_DIR}/${TEAMS_DESKTOP_FILE}"
 
     # Copy the system .desktop file to your $HOME and tweak it to launch teams-for-linux as a native Wayland application
-    if [[ ! -d "~/.local/share/applications" ]]; then
-        mkdir -p ~/.local/share/applications
+    if [[ ! -d "$LOCAL_APPLICATIONS_DIR" ]]; then
+        mkdir -p $LOCAL_APPLICATIONS_DIR
     fi
 
-    cp /usr/share/applications/teams-for-linux.desktop ~/.local/share/applications/.
-    sed -i 's/Exec=teams-for-linux/& --enable-webrtc-pipewire-capturer --ozone-platform-hint=auto/' ~/.local/share/applications/teams-for-linux.desktop
+    cp ${USR_APPLICATIONS_DIR}/${TEAMS_DESKTOP_FILE} ${LOCAL_APPLICATIONS_DIR}/.
+    sed -i 's/Exec=teams-for-linux/& --enable-webrtc-pipewire-capturer --ozone-platform-hint=auto/' ${LOCAL_APPLICATIONS_DIR}/${TEAMS_DESKTOP_FILE}
 fi

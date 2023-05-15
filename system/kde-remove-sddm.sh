@@ -7,26 +7,30 @@ sudo systemctl disable sddm.service
 # Remove all traces of SDDM
 paru -Rns sddm sddm-kcm
 
-# Append to .bash_profile in order to start KDE plasma when logging into to TTY1
-echo "Appending to ~/.bash_profile to support starting plasma after login on TTY1."
+BASH_PROFILE=~/.bash_profile
+FISH_CONFIG_DIR=~/.config/fish/conf.d
+TTY1_PLASMA_START_FISH_FILE=tty1-plasma-start.fish
 
-echo "" >> ~/.bash_profile
-echo "# If running from tty1 start kde plasma" >> ~/.bash_profile
-echo '[ "$(tty)" = "/dev/tty1" ] && exec startplasma-wayland' >> ~/.bash_profile
+# Append to .bash_profile in order to start KDE plasma when logging into to TTY1
+echo "Appending to ${BASH_PROFILE} to support starting plasma after login on TTY1."
+
+echo "" >> $BASH_PROFILE
+echo "# If running from tty1 start kde plasma" >> $BASH_PROFILE
+echo '[ "$(tty)" = "/dev/tty1" ] && exec startplasma-wayland' >> $BASH_PROFILE
 
 # If using fish, setup a .fish file to start KDE plasma with logging into TTY1
 if [[ -e /usr/bin/fish ]]; then
 
     echo "fish detected, creating ~/.config/fish/conf.d/plasma.fish to support starting plasma after login on TTY1."
 
-    cat <<EOT > "plasma.fish"	
+    cat <<EOT > ${TTY1_PLASMA_START_FISH_FILE}
 # If running from tty1 start kde plasma
 set TTY1 (tty)
 [ "\$TTY1" = "/dev/tty1" ] && exec startplasma-wayland
 EOT
 
-    cp plasma.fish ~/.config/fish/conf.d/.
-    rm plasma.fish
+    cp $TTY1_PLASMA_START_FISH_FILE ${FISH_CONFIG_DIR}/.
+    rm $TTY1_PLASMA_START_FISH_FILE
 fi
 
 echo "Configuring kwallet to unlock when logging in via TTY1."
