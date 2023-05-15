@@ -6,7 +6,7 @@ source $DIR/../_helper/_common-functions.sh
 
 FISH_CONFIG_DIR=~/.config/fish/conf.d
 ALIASES_FISH_FILE=aliases.fish
-CONFIG_FISH_FILE=config.fish
+PWD_LENGTH_FISH_FILE=pwd-length.fish
 
 function main() {
 
@@ -22,7 +22,7 @@ function install() {
     fi
 
     configure_fish_aliases
-    configure_fish
+    configure_fish_pwd_length
 
     # Change the shell to fish
     chsh -s /usr/bin/fish
@@ -42,16 +42,16 @@ EOT
     rm $ALIASES_FISH_FILE
 }
 
-function configure_fish() {
+function configure_fish_pwd_length() {
 
-    cat <<EOT > ${CONFIG_FISH_FILE}
+    cat <<EOT > ${PWD_LENGTH_FISH_FILE}
 # Don't shorten the working directory in the prompt
 set -g fish_prompt_pwd_dir_length 0
 
 EOT
 
-    cp $CONFIG_FISH_FILE ${FISH_CONFIG_DIR}/.
-    rm $CONFIG_FISH_FILE
+    cp $PWD_LENGTH_FISH_FILE ${FISH_CONFIG_DIR}/.
+    rm $PWD_LENGTH_FISH_FILE
 }
 
 main "$@"
