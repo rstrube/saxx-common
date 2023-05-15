@@ -1,5 +1,5 @@
 #!/bin/bash
-#|#./ingredients/icons/papirus-icons-folders.sh indigo Papirus-Dark #Supplmental colored folders for Papirus icon theme [Requires /icons/0_xxx-papirus-icons ingredient]
+#|#./ingredients/icons/1_papirus-icons-folders.sh indigo Papirus-Dark #Supplmental colored folders for Papirus icon theme [Requires /icons/0_papirus-icons ingredient]
 #|# Folder colors: black, bluegrey, brown, deeporange, grey, magenta, orange, paleorange, red, violet, yaru, blue, breeze, cyan, green, indigo, nordic, palebrown, pink, teal, white, yellow
 
 # Please see https://github.com/PapirusDevelopmentTeam/papirus-folders for a galley of all the folder colors that are available
