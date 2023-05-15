@@ -7,6 +7,7 @@ source $DIR/../_helper/_common-functions.sh
 FISH_CONFIG_DIR=~/.config/fish/conf.d
 ALIASES_FISH_FILE=aliases.fish
 PWD_LENGTH_FISH_FILE=pwd-length.fish
+FISH_BIN=/usr/bin/fish
 
 function main() {
 
@@ -21,13 +22,16 @@ function install() {
         mkdir -p $FISH_CONFIG_DIR
     fi
 
+    if [[ "$SHELL" != "$FISH_BIN" ]]; then
+    
+        # Change the shell to fish
+        chsh -s $FISH_BIN
+
+        echo -e "${YELLOW}Warning: you will need logout in order for the shell change to take effect.${NC}"
+    fi
+
     configure_fish_aliases
     configure_fish_pwd_length
-
-    # Change the shell to fish
-    chsh -s /usr/bin/fish
-
-    echo -e "${YELLOW}Warning: you will need logout in order for the shell change to take effect.${NC}"
 }
 
 function configure_fish_aliases() {
