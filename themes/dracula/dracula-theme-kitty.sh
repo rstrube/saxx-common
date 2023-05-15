@@ -6,14 +6,11 @@ KITTY_CONFIG_FILE_FULL_PATH=${KITTY_CONFIG_DIR}/${KITTY_CONFIG_FILE}
 
 DRACULA_COLORS_CONFIG_FILE=dracula-colors.conf
 
-function init_dracula_kitty() {
+function configure_dracula_kitty {
 
     if [[ ! -d "$KITTY_CONFIG_DIR" ]]; then
         mkdir -p $KITTY_CONFIG_DIR
     fi
-}
-
-function configure_dracula_kitty {
 
     cat <<EOT > ${DRACULA_COLORS_CONFIG_FILE}
 # vim:ft=kitty
@@ -53,8 +50,7 @@ mark1_foreground #282a36
 mark1_background #ff5555
 EOT
 
-    cp $DRACULA_COLORS_CONFIG_FILE ${KITTY_CONFIG_DIR}/.
-    rm $DRACULA_COLORS_CONFIG_FILE
+    mv $DRACULA_COLORS_CONFIG_FILE $KITTY_CONFIG_DIR
 
     echo "# BEGIN_KITTY_THEME" >> ${KITTY_CONFIG_FILE_FULL_PATH}
     echo "# Dracula Theme" >> ${KITTY_CONFIG_FILE_FULL_PATH}

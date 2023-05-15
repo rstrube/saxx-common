@@ -12,4 +12,4 @@ sudo usermod -a -G docker $USER
 sudo systemctl enable docker.service
 sudo systemctl start docker.service
 
-echo -e "${YELLOW}Warning: you will need to reboot in order for the configuration changes to take affect.${NC}"
+echo -e "${YELLOW}Warning: you will need to reboot in order for the configuration changes to take affect${NC}"

@@ -30,8 +30,7 @@ EOT
 EOT
     fi
 
-    cp $CODE_FLAGS $CONFIG_DIR
-    rm $CODE_FLAGS
+    mv $CODE_FLAGS $CONFIG_DIR
 fi
 
 if [[ ! -d "$VSCODE_SETTINGS_DIR_PATH" ]]; then

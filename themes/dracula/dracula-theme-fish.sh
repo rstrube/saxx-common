@@ -4,14 +4,11 @@ FISH_CONFIG_DIR=~/.config/fish/conf.d
 TTY_DRACULA_COLORS_FISH_FILE=tty-dracula-colors.fish
 DRACULA_COLORS_FISH_FILE=dracula-colors.fish
 
-function init_dracula_fish() {
+function configure_dracula_fish_tty_colors {
 
     if [[ ! -d "$FISH_CONFIG_DIR" ]]; then
         mkdir -p $FISH_CONFIG_DIR
     fi
-}
-
-function configure_dracula_fish_tty_colors {
 
     cat <<EOT > ${TTY_DRACULA_COLORS_FISH_FILE}
 # Set colors for TTY (Linux Virtual Console) so things look good
@@ -40,11 +37,14 @@ if [ "\$TERM" = "linux" ]
 end
 EOT
 
-    cp ${TTY_DRACULA_COLORS_FISH_FILE} ${FISH_CONFIG_DIR}/.
-    rm ${TTY_DRACULA_COLORS_FISH_FILE}
+    mv $TTY_DRACULA_COLORS_FISH_FILE $FISH_CONFIG_DIR
 }
 
 function configure_dracula_fish_colors {
+
+    if [[ ! -d "$FISH_CONFIG_DIR" ]]; then
+        mkdir -p $FISH_CONFIG_DIR
+    fi
 
     cat <<EOT > ${DRACULA_COLORS_FISH_FILE}
 # Colorscheme: Dracula
@@ -88,6 +88,5 @@ set -U fish_color_option
 set -U fish_pager_color_secondary_completion
 EOT
 
-    cp ${DRACULA_COLORS_FISH_FILE} ${FISH_CONFIG_DIR}/.
-    rm ${DRACULA_COLORS_FISH_FILE}
+    mv $DRACULA_COLORS_FISH_FILE $FISH_CONFIG_DIR
 }

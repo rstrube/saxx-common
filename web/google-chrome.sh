@@ -18,6 +18,5 @@ if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
 --ozone-platform-hint=auto
 EOT
 
-    cp $CHROME_FLAGS $CONFIG_DIR
-    rm $CHROME_FLAGS
+    mv $CHROME_FLAGS $CONFIG_DIR
 fi

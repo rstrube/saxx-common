@@ -20,14 +20,14 @@ LPURPLE='\033[01;35m'
 LCYAN='\033[01;36m'
 WHITE='\033[01;37m'
 
-ERROR_VARS_MESSAGE="${RED}Error: invalid argument value passed in.${NC}"
+ERROR_VARS_MESSAGE="${RED}Error: invalid argument value passed in${NC}"
 
 function check_variables_value() {
     NAME=$1
     VALUE=$2
     if [[ -z "$VALUE" ]]; then
         echo -e ${ERROR_VARS_MESSAGE}
-        echo "${NAME} must have a value."
+        echo "${NAME} must have a value"
         exit 1
     fi
 }
@@ -42,7 +42,7 @@ function check_variables_boolean() {
             ;;
         * )
             echo -e ${ERROR_VARS_MESSAGE}
-            echo "${NAME} must be {true|false}."
+            echo "${NAME} must be {true|false}"
             exit 1
             ;;
     esac
@@ -51,7 +51,7 @@ function check_variables_boolean() {
 function check_flatpak_prereq() {
 
     if [[ ! -e /usr/bin/flatpak ]]; then
-        echo -e "${RED}Error: flatpak must be installed.${NC}"
+        echo -e "${RED}Error: flatpak must be installed${NC}"
         exit 1
     fi
 }

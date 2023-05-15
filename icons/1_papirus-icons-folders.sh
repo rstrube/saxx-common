@@ -40,7 +40,7 @@ function check_args() {
     print_help_if_neccessary "$@"
 
     if [[ "$#" -ne 2 ]]; then
-        echo -e "${RED}Error: this script must be run with two arguments.${NC}"
+        echo -e "${RED}Error: this script must be run with two arguments${NC}"
         echo ""
         print_help
         exit 1

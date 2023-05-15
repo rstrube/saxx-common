@@ -6,8 +6,8 @@ LOCAL_FONT_CONFIG_DIR=~/.config/fontconfig
 FONT_CONFIG_FILE=fonts.conf
 
 DIR=$(dirname "$0")
-source $DIR/jetbrains-mono/jetbrains-mono-kitty.sh
-source $DIR/jetbrains-mono/jetbrains-mono-vscode.sh
+source $DIR/_helper/kitty-font-functions.sh
+source $DIR/_helper/vscode-font-functions.sh
 
 KITTY=/usr/bin/kitty
 VSCODE=/usr/bin/code
@@ -72,15 +72,14 @@ fi
 if [[ -e "$KITTY" ]]; then
     echo "Configuring Jetbrains Mono font for kitty"
 
-    init_jetbrains_mono_kitty
-    configure_jetbrains_mono_kitty
+    configure_kitty_font "JetBrains Mono" "12.0"
 fi
 
 # vscode
 if [[ -e "$VSCODE" ]]; then
     echo "Configuring Jetbrains Mono font for vscode"
 
-    configure_jetbrains_mono_vscode
+    configure_vscode_font "JetBrains Mono" "500"
 fi
 
 # Test font coverage for specific unicode characters required by PowerLine

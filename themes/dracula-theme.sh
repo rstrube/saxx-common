@@ -14,7 +14,6 @@ VSCODE=/usr/bin/code
 if [[ -e "$FISH" ]]; then
     echo "Configuring Dracula theme for fish"
 
-    init_dracula_fish
     configure_dracula_fish_tty_colors
     configure_dracula_fish_colors
 fi
@@ -23,7 +22,6 @@ fi
 if [[ -e "$KITTY" ]]; then
     echo "Configuring Dracula theme for kitty"
 
-    init_dracula_kitty
     configure_dracula_kitty
 fi
 

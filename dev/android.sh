@@ -9,4 +9,4 @@ paru -S --noconfirm --needed android-tools android-udev
 # Add user to the correct groups
 sudo usermod -a -G adbusers $USER
 
-echo -e "${YELLOW}Warning: you will need to reboot in order for the configuration changes to take affect.${NC}"
+echo -e "${YELLOW}Warning: you will need to reboot in order for the configuration changes to take affect${NC}"

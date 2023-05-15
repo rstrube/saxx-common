@@ -24,10 +24,11 @@ function install() {
 
     if [[ "$SHELL" != "$FISH_BIN" ]]; then
     
-        # Change the shell to fish
+        echo "Changing shell to fish"
+        
         chsh -s $FISH_BIN
 
-        echo -e "${YELLOW}Warning: you will need logout in order for the shell change to take effect.${NC}"
+        echo -e "${YELLOW}Warning: you will need logout in order for the shell change to take effect${NC}"
     fi
 
     configure_fish_aliases
@@ -42,8 +43,7 @@ alias l.="ls -d .*"
 alias pacman_remove_orphans="paru -c"
 EOT
 
-    cp $ALIASES_FISH_FILE ${FISH_CONFIG_DIR}/.
-    rm $ALIASES_FISH_FILE
+    mv $ALIASES_FISH_FILE $FISH_CONFIG_DIR}
 }
 
 function configure_fish_pwd_length() {
@@ -54,8 +54,7 @@ set -g fish_prompt_pwd_dir_length 0
 
 EOT
 
-    cp $PWD_LENGTH_FISH_FILE ${FISH_CONFIG_DIR}/.
-    rm $PWD_LENGTH_FISH_FILE
+    mv $PWD_LENGTH_FISH_FILE $FISH_CONFIG_DIR}
 }
 
 main "$@"
