@@ -1,7 +1,17 @@
 #!/bin/bash
-#|#./ingredients/themes/dracula-theme-kitty.sh #Dracula theme for kitty terminal emulator
 
-cat <<EOT > "dracula-colors.conf"
+KITTY_CONF_DIR=~/.config/kitty
+
+function init_dracula_kitty() {
+
+    if [[ ! -d "$KITTY_CONF_DIR" ]]; then
+        mkdir -p $KITTY_CONF_DIR
+    fi
+}
+
+function configure_dracula_kitty {
+
+    cat <<EOT > "dracula-colors.conf"
 # vim:ft=kitty
 ## name: Dracula
 ## author: Keegan Carruthers-Smith
@@ -39,11 +49,11 @@ mark1_foreground #282a36
 mark1_background #ff5555
 EOT
 
-mkdir -p ~/.config/kitty
-cp dracula-colors.conf ~/.config/kitty/.
-rm dracula-colors.conf
+    cp dracula-colors.conf ${KITTY_CONF_DIR}/.
+    rm dracula-colors.conf
 
-echo "# BEGIN_KITTY_THEME" >> ~/.config/kitty/kitty.conf
-echo "# Dracula Theme" >> ~/.config/kitty/kitty.conf
-echo "include dracula-colors.conf" >> ~/.config/kitty/kitty.conf
-echo "# END_KITTY_THEME" >> ~/.config/kitty/kitty.conf
+    echo "# BEGIN_KITTY_THEME" >> ~/.config/kitty/kitty.conf
+    echo "# Dracula Theme" >> ~/.config/kitty/kitty.conf
+    echo "include dracula-colors.conf" >> ~/.config/kitty/kitty.conf
+    echo "# END_KITTY_THEME" >> ~/.config/kitty/kitty.conf
+}
