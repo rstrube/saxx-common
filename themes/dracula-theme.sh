@@ -12,7 +12,7 @@ VSCODE=/usr/bin/code
 
 # fish
 if [[ -e "$FISH" ]]; then
-    echo "Setting up dracula theme for fish"
+    echo "Configuring Dracula theme for fish"
 
     init_dracula_fish
     configure_dracula_fish_tty_colors
@@ -21,7 +21,7 @@ fi
 
 # kitty
 if [[ -e "$KITTY" ]]; then
-    echo "Setting up dracula theme for kitty"
+    echo "Configuring Dracula theme for kitty"
 
     init_dracula_kitty
     configure_dracula_kitty
@@ -29,7 +29,7 @@ fi
 
 # vscode
 if [[ -e "$VSCODE" ]]; then
-    echo "Setting up dracula theme for vscode"
+    echo "Configuring Dracula theme for vscode"
 
     configure_dracula_vscode
 fi
