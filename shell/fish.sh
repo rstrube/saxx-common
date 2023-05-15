@@ -43,7 +43,7 @@ alias l.="ls -d .*"
 alias pacman_remove_orphans="paru -c"
 EOT
 
-    mv $ALIASES_FISH_FILE $FISH_CONFIG_DIR}
+    mv $ALIASES_FISH_FILE $FISH_CONFIG_DIR
 }
 
 function configure_fish_pwd_length() {
@@ -54,7 +54,7 @@ set -g fish_prompt_pwd_dir_length 0
 
 EOT
 
-    mv $PWD_LENGTH_FISH_FILE $FISH_CONFIG_DIR}
+    mv $PWD_LENGTH_FISH_FILE $FISH_CONFIG_DIR
 }
 
 main "$@"
