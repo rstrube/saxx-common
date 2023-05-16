@@ -1,6 +1,6 @@
 #!/bin/bash
 
-function configure_dracula_vscode {
+function configure_dracula_colors_vscode {
 
     local VSCODE_SETTINGS_DIR_PATH="${HOME}/.config/Code/User"
     local VSCODE_SETTINGS_FILE_PATH="${VSCODE_SETTINGS_DIR_PATH}/settings.json"

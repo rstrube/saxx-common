@@ -4,7 +4,7 @@ FISH_CONFIG_DIR=~/.config/fish/conf.d
 TTY_DRACULA_COLORS_FISH_FILE=tty-dracula-colors.fish
 DRACULA_COLORS_FISH_FILE=dracula-colors.fish
 
-function configure_dracula_fish_tty_colors {
+function configure_dracula_colors_fish_tty {
 
     if [[ ! -d "$FISH_CONFIG_DIR" ]]; then
         mkdir -p $FISH_CONFIG_DIR
@@ -40,7 +40,7 @@ EOT
     mv $TTY_DRACULA_COLORS_FISH_FILE $FISH_CONFIG_DIR
 }
 
-function configure_dracula_fish_colors {
+function configure_dracula_colors_fish {
 
     if [[ ! -d "$FISH_CONFIG_DIR" ]]; then
         mkdir -p $FISH_CONFIG_DIR

@@ -1,7 +1,7 @@
 #!/bin/bash
-#|#./ingredients/themes/kde-layan-theme.sh #Layan theme for KDE
+#|#./ingredients/themes/arc-theme.sh #Arc Theme for Qt and GTK apps
 
-paru -S --noconfirm --needed layan-kde-git kvantum-theme-layan-git layan-gtk-theme-git
+paru -S --noconfirm --needed arc-gtk-theme arc-kde
 
 KVANTUM_CONFIG_DIR=~/.config/Kvantum
 KVANTUM_CONFIG_FILE=kvantum.kvconfig
@@ -13,7 +13,7 @@ fi
 # Create kvantum config setting Layan theme
 cat <<EOT > ${KVANTUM_CONFIG_FILE}
 [General]
-theme=LayanSolidDark
+theme=ArcDark
 EOT
 
 mv $KVANTUM_CONFIG_FILE $KVANTUM_CONFIG_DIR

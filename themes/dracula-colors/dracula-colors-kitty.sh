@@ -6,7 +6,7 @@ KITTY_CONFIG_FILE_FULL_PATH=${KITTY_CONFIG_DIR}/${KITTY_CONFIG_FILE}
 
 DRACULA_COLORS_CONFIG_FILE=dracula-colors.conf
 
-function configure_dracula_kitty {
+function configure_dracula_colors_kitty {
 
     if [[ ! -d "$KITTY_CONFIG_DIR" ]]; then
         mkdir -p $KITTY_CONFIG_DIR
