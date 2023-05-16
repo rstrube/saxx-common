@@ -1,5 +1,5 @@
 #!/bin/bash
-#|#./ingredients/themes/dracula-colors.sh #Dracula colors for fish, kitty, and vscode
+#|#./ingredients/themes/dracula-colors.sh #Dracula colors terminal, IDEs
 
 DIR=$(dirname "$0")
 source $DIR/dracula-colors/dracula-colors-fish.sh
