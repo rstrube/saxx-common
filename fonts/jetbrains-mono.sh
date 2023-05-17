@@ -50,23 +50,23 @@ fc-cache -r -v
 # Confirm that Jetbrains Mono is the default font used for monospace
 fc-match --verbose monospace
 
-# Gnome
-if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
-    echo "Configuring Jetbrains Mono font for Gnome"
-
-    gsettings set org.gnome.desktop.interface font-name "Noto Sans 10"
-    gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 10"
-    gsettings set org.gnome.desktop.interface monospace-font-name "JetBrains Mono 11"
-    gsettings set org.gnome.desktop.wm.preferences titlebar-font "Noto Sans Medium 10"
-fi
-
 # KDE
 if [[ "$XDG_CURRENT_DESKTOP" == "KDE" ]]; then
     echo "Configuring Jetbrains Mono font for KDE"
 
-    # Set the default fixed with font for KDE to JetBrains Mono 11pt
+    kwriteconfig5 --group General --key font "Noto Sans,10,-1,5,50,0,0,0,0,0"
+    kwriteconfig5 --group General --key menuFont "Noto Sans,10,-1,5,50,0,0,0,0,0"
+    kwriteconfig5 --group General --key smallestReadableFont "Noto Sans,8,-1,5,50,0,0,0,0,0"
     kwriteconfig5 --group General --key fixed "JetBrains Mono,11,-1,5,50,0,0,0,0,0"
 fi
+
+# Gnome / GTK applications
+echo "Configuring Jetbrains Mono font for Gnome / GTK applications"
+
+gsettings set org.gnome.desktop.interface font-name "Noto Sans 10"
+gsettings set org.gnome.desktop.interface document-font-name "Noto Sans 10"
+gsettings set org.gnome.desktop.interface monospace-font-name "JetBrains Mono 11"
+gsettings set org.gnome.desktop.wm.preferences titlebar-font "Noto Sans Medium 10"
 
 # kitty
 if [[ -e "$KITTY" ]]; then
