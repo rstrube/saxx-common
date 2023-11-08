@@ -15,20 +15,10 @@ if [[ "$XDG_SESSION_TYPE" == "wayland" ]]; then
         mkdir -p $CONFIG_DIR
     fi
 
-    if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
-        echo "Gnome detected, adding --enable-features=WaylandWindowDecorations"
-
-        cat <<EOT > ${CODE_FLAGS}
---enable-features=WaylandWindowDecorations
+    cat <<EOT > ${CODE_FLAGS}
 --enable-webrtc-pipewire-capturer
 --ozone-platform-hint=auto
 EOT
-    else
-        cat <<EOT > ${CODE_FLAGS}
---enable-webrtc-pipewire-capturer
---ozone-platform-hint=auto
-EOT
-    fi
 
     mv $CODE_FLAGS $CONFIG_DIR
 fi
@@ -42,4 +32,10 @@ if [[ ! -e "$VSCODE_SETTINGS_FILE_PATH" ]]; then
 
     echo "{" > "$VSCODE_SETTINGS_FILE_PATH"
     echo "}" >> "$VSCODE_SETTINGS_FILE_PATH"
+fi
+
+if [[ "$XDG_CURRENT_DESKTOP" == "GNOME" ]]; then
+        echo "Gnome detected, setting vscode to use custom titlebar..."
+
+    sed -i '$i\    "window.titleBarStyle": "custom",' "$VSCODE_SETTINGS_FILE_PATH"
 fi
