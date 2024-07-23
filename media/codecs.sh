@@ -40,3 +40,7 @@ paru -S --noconfirm --needed jasper libwebp libavif libheif
 # Theora: libtheora
 # VP8, VP9: libvpx
 paru -S --noconfirm --needed dav1d libdv schroedinger x265 x264 libmpeg2 xvidcore libtheora libvpx
+
+# Backends
+# libavcodec: part of the ffmpeg project (which has now split from libva)
+paru -S --noconfirm --needed ffmpeg
